@@ -1,0 +1,13 @@
+{
+  "name": "conformity_assessment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^8.7.1"
+  }
+}

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
-
 const app = express();
+const cors = require("cors");
+app.use(cors());
 const mongoURI = 'mongodb+srv://deepanshuyshah:PdFzEAZxH0qrCfPB@cluster0.giwsj.mongodb.net/Conformity';
 
 const PORT = 4000;
@@ -17,13 +18,12 @@ mongoose.connect(mongoURI)
         console.error('Failed to connect to MongoDB:', err);
     });
 
-const defSchema = new mongoose.Schema({}, { strict: false });
-const Database = mongoose.model("customerData", defSchema, "customerData");
+const schema = new mongoose.Schema({}, { strict: false });
+const Database = mongoose.model("customerData", schema, "customerData");
 
 app.get('/data', async (req, res) => {
     try {
         const data = await Database.find();
-        console.log("data received from database: ", data)
         res.json(data);
     } catch (err) {
         console.error('Error fetching data:', err);

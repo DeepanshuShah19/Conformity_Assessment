@@ -1,5 +1,5 @@
 # Conformity_Assessment
-Step1: Open the main folder after cloning the code \n
+Step1: Open the main folder after cloning the code
 Step2: Now you will be able to see 2 folders named conformality_backend and conformality_frontend which holds the respective code
 Step3: Open both of these folders in seperate terminals
 Step4: In conformality_backend terminal run the node script but typing command "node app.js"

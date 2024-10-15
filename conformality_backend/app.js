@@ -49,3 +49,13 @@ app.delete('/deleteUser/:userID', async (req, res) => {
         res.status(500).json({ error: 'Failed to delete user' });
     }
 });
+
+app.post('/addUser', async (req, res) => {
+    try {
+        const result = await Database.create(req.body);
+        res.status(200).json({ message: 'User added successfully', statusCode: 200 });
+    } catch (err) {
+        console.error('Error deleting user:', err);
+        res.status(500).json({ error: 'Failed to add user' });
+    }
+});

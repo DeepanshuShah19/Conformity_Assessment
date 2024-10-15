@@ -13,16 +13,6 @@
     margin-left: 5%;
 }
 
-.deleteTable{
-    width: 70%;
-    margin: 0 auto;
-}
-
-.deleteTable .deleteButton{
-    background-color: #FDECEB;
-    color: #DB3737;
-}
-
 /* add user css */
 .addUserForm {
     width: 50%;
@@ -75,4 +65,15 @@
 
 .submitButton:disabled {
     background-color: #999999;
+}
+
+/* delete table css */
+.deleteTable{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.deleteTable .deleteButton{
+    background-color: #FDECEB;
+    color: #DB3737;
 }

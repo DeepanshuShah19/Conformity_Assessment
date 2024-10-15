@@ -35,6 +35,7 @@ export default class Users extends Component {
         })
     }
 
+    //onchange event to set user entered values to state variables
     textFieldChange = (event) => {
         this.setState({
             [event.target.id]: event.target.value
@@ -43,6 +44,7 @@ export default class Users extends Component {
         })
     }
 
+    //form validation to validate user entered values
     formValidation = () => {
         if (this.state.fname && this.state.lname && this.state.department && this.state.location) {
             this.setState({
@@ -54,7 +56,7 @@ export default class Users extends Component {
             })
         }
     }
-
+    // method to delete a user
     delete = async (userID) => {
         let deleteResponse = await deleteUser(userID)
         if (deleteResponse.statusCode === 200) {
@@ -63,7 +65,9 @@ export default class Users extends Component {
         }
     }
 
+    // method to add new user
     addUser = async () => {
+        // code to generate new userId
         const lastUser = this.state.complianceData.length > 0
             ? this.state.complianceData[this.state.complianceData.length - 1]
             : null;
@@ -74,10 +78,11 @@ export default class Users extends Component {
             const lastUserNumber = parseInt(lastUserID.slice(1));
             newUserID = 'U' + (lastUserNumber + 1).toString().padStart(4, '0');
         }
+
+        // api call to add new user
         let addUserResponse = await addNewuser(newUserID, this.state.fname + this.state.lname, this.state.department, this.state.location, this.state.privacyTraining,
             this.state.amlCertification, this.state.codeOfConduct, this.state.securityTraining, this.state.riskManagementTraining, this.state.incidentReports, this.state.backgroundCheck
         )
-        console.log(addUserResponse)
         if (addUserResponse.statusCode === 200) {
             let responseData = await getData();
             this.setState({
@@ -90,6 +95,7 @@ export default class Users extends Component {
     render() {
         return (
             <>
+                {/* add and delete buttons */}
                 <div className="header">
                     <Button className="userButton" onClick={() => { this.setState({ show: 'add' }) }}>Add User</Button>
                     <Button className="userButton paddings" onClick={() => { this.setState({ show: 'delete' }) }}>Delete User</Button>
@@ -97,6 +103,7 @@ export default class Users extends Component {
                 <div>
                     {this.state.show === 'add'
                         ?
+                        //  form to add new user
                         <div className="addUserForm">
                             <Typography className="formTitle">Add New User</Typography>
 
@@ -198,6 +205,7 @@ export default class Users extends Component {
                             </div>
                         </div>
                         :
+                        // table to show existing users and give delete button
                         <div className="deleteTable">
                             <table>
                                 <thead>

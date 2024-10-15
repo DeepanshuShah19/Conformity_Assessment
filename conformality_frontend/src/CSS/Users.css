@@ -1,0 +1,20 @@
+.header{
+    display: flex;
+    margin-top: 2%;
+    justify-content: center;
+}
+
+.header .userButton {
+    font-size: 1.2rem;
+    color: black;
+}
+
+.deleteTable{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.deleteTable .deleteButton{
+    background-color: #FDECEB;
+    color: #DB3737;
+}

@@ -1,0 +1,36 @@
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.table-container {
+    flex: 1; 
+    margin: 0 10px; 
+}
+
+h2 {
+    text-align: center;
+}
+
+table {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+}
+
+th, td {
+    border: 1px solid black; 
+    padding: 10px; 
+    text-align: center; 
+}
+
+th {
+    background-color: rgba(75, 192, 192, 0.6); 
+}
+
+.pie-chart-container {
+    align-items: flex-end;
+    justify-content: center; 
+    margin-left: 100px; 
+}

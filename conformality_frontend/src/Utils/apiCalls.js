@@ -25,3 +25,28 @@ export const getData = async () => {
     }
     return null;
 }
+
+export const deleteUser = async (userID) => {
+    const options = {
+        method: "DELETE",
+        redirect: 'follow',
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+    };
+
+    try {
+        let response = await fetch(API_URL + "deleteUser/" + userID, options);
+        let json = await response.json();
+        if (json) {
+            return json;
+        }else {
+            return null
+        }
+    } catch (err) {
+        console.error('Error while retriving data from database', err);
+    }
+    return null;
+}

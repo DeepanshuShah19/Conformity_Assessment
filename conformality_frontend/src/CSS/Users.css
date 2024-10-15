@@ -9,6 +9,10 @@
     color: black;
 }
 
+.header .paddings{
+    margin-left: 5%;
+}
+
 .deleteTable{
     width: 70%;
     margin: 0 auto;

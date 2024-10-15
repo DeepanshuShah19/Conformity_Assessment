@@ -1,5 +1,7 @@
+//api endpoint base url
 let API_URL = "http://localhost:4000/"
 
+//api call to get all customer data
 export const getData = async () => {
     const options = {
         method: "GET",
@@ -26,6 +28,7 @@ export const getData = async () => {
     return null;
 }
 
+//api call to delete existing user
 export const deleteUser = async (userID) => {
     const options = {
         method: "DELETE",
@@ -51,6 +54,7 @@ export const deleteUser = async (userID) => {
     return null;
 }
 
+// api call to add new user
 export const addNewuser = async (userID, name, department, location, privacyTraining, amlCertification, codeOfConduct, securityTraining, riskManagementTraining, incidentReports, backgroundCheck) => {
     const requestBody = {
         userID: userID,

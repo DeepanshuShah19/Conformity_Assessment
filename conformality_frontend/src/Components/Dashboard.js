@@ -1,69 +1,3 @@
-// import React, { Component } from "react";
-// import { getData } from '../Utils/apiCalls';
-// import { Typography, Button } from '@mui/material';
-// import DataCharts from "./DataCharts";
-// import Users from "./Users";
-// import '../CSS/Dashboard.css';
-
-// export default class Dashboard extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             complianceData: [],
-//             show: 'dashBoard'
-//         };
-//     }
-
-//     async componentDidMount() {
-//         this.view('dashBoard')
-//     }
-
-//     view = async (view) => {
-//         let responseData = await getData();
-//         if (view === 'dashBoard') {
-//             this.setState({
-//                 complianceData: responseData,
-//                 show: 'dashBoard'
-//             });
-//         } else {
-//             this.setState({
-//                 complianceData: responseData,
-//                 show: 'users'
-//             });
-//         }
-//     }
-
-//     render() {
-//         return (
-//             <div className="root">
-//                 {/* Topbar */}
-//                 <div className="topBar">
-//                     <Typography variant="h4" className="topBarText">Conformity Compliance Dashboard</Typography>
-//                 </div>
-
-//                 {/* Main content with sidebar and dashboard/users */}
-//                 <div className="content">
-//                     <div className="sideBar">
-//                         <Button className="sidebarButton" style={{ marginTop: '20%' }} onClick={() => { this.view('dashBoard') }}>Dashboard</Button>
-//                         <Button className="sidebarButton" onClick={() => { this.view('users') }}>Users</Button>
-//                     </div>
-
-//                     {this.state.show === 'dashBoard' ? (
-//                         <div className="dashboard">
-//                             <DataCharts complianceData={this.state.complianceData} />
-//                         </div>
-//                     ) : (
-//                         <div className="users">
-//                             <Users complianceData={this.state.complianceData} />
-//                         </div>
-//                     )}
-//                 </div>
-//             </div>
-//         );
-//     }
-// }
-
-
 import React, { Component } from "react";
 import { getData } from '../Utils/apiCalls';
 import { Typography, Button, IconButton, Drawer } from '@mui/material';
@@ -86,6 +20,7 @@ export default class Dashboard extends Component {
         this.view('dashBoard');
     }
 
+    //method to get customer data and toggel the view
     view = async (view) => {
         let responseData = await getData();
         this.setState({
@@ -94,6 +29,7 @@ export default class Dashboard extends Component {
         });
     };
 
+    // method to display sidebar drawer
     toggleSidebar = () => {
         this.setState(prevState => ({
             isSidebarOpen: !prevState.isSidebarOpen
@@ -103,6 +39,7 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div className="root">
+                {/* topbar */}
                 <div className="topBar">
                     <div className="topBarContent">
                         <IconButton
@@ -120,6 +57,7 @@ export default class Dashboard extends Component {
                     </div>
                 </div>
 
+                {/* sidebar */}
                 <Drawer
                     anchor="left"
                     open={this.state.isSidebarOpen}

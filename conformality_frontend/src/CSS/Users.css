@@ -1,4 +1,4 @@
-.header{
+.header {
     display: flex;
     margin-top: 2%;
     justify-content: center;
@@ -7,10 +7,14 @@
 .header .userButton {
     font-size: 1.2rem;
     color: black;
+    background-color: #EBF7EC;
+    color: #1D7324;
 }
 
-.header .paddings{
+.header .paddings {
     margin-left: 5%;
+    background-color: #FDECEB;
+    color: #DB3737;
 }
 
 /* add user css */
@@ -38,7 +42,7 @@
     margin-bottom: 20px;
 }
 
-.centre{
+.centre {
     justify-content: center;
 }
 
@@ -51,29 +55,17 @@
     margin-bottom: 20px;
 }
 
-.submitButton {
-    display: block;
-    width: 30%;
-    background-color: #2dcd7a;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
 .submitButton:disabled {
     background-color: #999999;
 }
 
 /* delete table css */
-.deleteTable{
+.deleteTable {
     width: 70%;
     margin: 0 auto;
 }
 
-.deleteTable .deleteButton{
+.deleteTable .deleteButton {
     background-color: #FDECEB;
     color: #DB3737;
 }

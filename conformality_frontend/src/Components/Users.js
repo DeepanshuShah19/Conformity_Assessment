@@ -7,7 +7,16 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import dayjs from 'dayjs';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import '../CSS/Users.css';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#2dcd7a',
+        },
+    }
+});
 
 export default class Users extends Component {
     constructor(props) {
@@ -104,106 +113,108 @@ export default class Users extends Component {
                     {this.state.show === 'add'
                         ?
                         //  form to add new user
-                        <div className="addUserForm">
-                            <Typography className="formTitle">Add New User</Typography>
+                        <ThemeProvider theme={theme}>
+                            <div className="addUserForm">
+                                <Typography className="formTitle">Add New User</Typography>
 
-                            <div className="formSection">
-                                <TextField id="fname" required label="First Name" type="text" onChange={this.textFieldChange} className="formInput" />
-                                <TextField id="lname" required label="Last Name" type="text" onChange={this.textFieldChange} className="formInput" />
-                            </div>
+                                <div className="formSection">
+                                    <TextField id="fname" required label="First Name" type="text" onChange={this.textFieldChange} className="formInput" />
+                                    <TextField id="lname" required label="Last Name" type="text" onChange={this.textFieldChange} className="formInput" />
+                                </div>
 
-                            <div className="formSection">
-                                <TextField id="department" required label="Department" type="text" onChange={this.textFieldChange} className="formInput" />
-                                <TextField id="location" required label="Location" type="text" onChange={this.textFieldChange} className="formInput" />
-                            </div>
+                                <div className="formSection">
+                                    <TextField id="department" required label="Department" type="text" onChange={this.textFieldChange} className="formInput" />
+                                    <TextField id="location" required label="Location" type="text" onChange={this.textFieldChange} className="formInput" />
+                                </div>
 
-                            <div className="formSection">
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker
-                                        id='privacyTraining'
-                                        label='Privacy Training'
-                                        className='formInput'
-                                        onChange={(date) => {
-                                            const formattedDate = dayjs(date).format('YYYY-MM-DD');
-                                            this.setState({ privacyTraining: formattedDate })
-                                        }}
-                                    />
-                                </LocalizationProvider>
-
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker
-                                        id='amlCertification'
-                                        label='AML Certification'
-                                        className='formInput'
-                                        onChange={(date) => {
-                                            const formattedDate = dayjs(date).format('YYYY-MM-DD');
-                                            this.setState({ amlCertification: formattedDate })
-                                        }}
-                                    />
-                                </LocalizationProvider>
-                            </div>
-
-                            <div className="formSection">
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker
-                                        id='codeOfConduct'
-                                        label='Code Of Conduct'
-                                        className='formInput'
-                                        onChange={(date) => {
-                                            const formattedDate = dayjs(date).format('YYYY-MM-DD');
-                                            this.setState({ codeOfConduct: formattedDate })
-                                        }}
-                                    />
-                                </LocalizationProvider>
-
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker
-                                        id='securityTraining'
-                                        label='Security Training'
-                                        className='formInput'
-                                        onChange={(date) => {
-                                            const formattedDate = dayjs(date).format('YYYY-MM-DD');
-                                            this.setState({ securityTraining: formattedDate })
-                                        }}
-                                    />
-                                </LocalizationProvider>
-                            </div>
-
-                            <div className="formSection">
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker
-                                        id='riskManagementTraining'
-                                        label='Risk Management Training'
-                                        className='formInput'
-                                        onChange={(date) => {
-                                            const formattedDate = dayjs(date).format('YYYY-MM-DD');
-                                            this.setState({ riskManagementTraining: formattedDate })
-                                        }}
-                                    />
-                                </LocalizationProvider>
-
-                                <TextField id="incidentReports" required label="Incident Reported" value={this.state.incidentReports} type="number" className="formInput" onChange={this.textFieldChange} />
-                            </div>
-                            <div className="formSection centre" >
-                                <FormControlLabel
-                                    label="Background Check"
-                                    className="backgroundCheckLabel"
-                                    control={
-                                        <Checkbox
-                                            id="backgroundCheck"
-                                            checked={this.state.backgroundCheck}
-                                            onChange={(e) => this.setState({ backgroundCheck: e.target.checked })}
+                                <div className="formSection">
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DatePicker
+                                            id='privacyTraining'
+                                            label='Privacy Training'
+                                            className='formInput'
+                                            onChange={(date) => {
+                                                const formattedDate = dayjs(date).format('YYYY-MM-DD');
+                                                this.setState({ privacyTraining: formattedDate })
+                                            }}
                                         />
-                                    }
-                                />
-                            </div>
+                                    </LocalizationProvider>
 
-                            <div className="formSection centre">
-                                <Button className='submitButton' disabled={!this.state.formValid} onClick={this.addUser}>
-                                    Add User
-                                </Button>
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DatePicker
+                                            id='amlCertification'
+                                            label='AML Certification'
+                                            className='formInput'
+                                            onChange={(date) => {
+                                                const formattedDate = dayjs(date).format('YYYY-MM-DD');
+                                                this.setState({ amlCertification: formattedDate })
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+                                </div>
+
+                                <div className="formSection">
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DatePicker
+                                            id='codeOfConduct'
+                                            label='Code Of Conduct'
+                                            className='formInput'
+                                            onChange={(date) => {
+                                                const formattedDate = dayjs(date).format('YYYY-MM-DD');
+                                                this.setState({ codeOfConduct: formattedDate })
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DatePicker
+                                            id='securityTraining'
+                                            label='Security Training'
+                                            className='formInput'
+                                            onChange={(date) => {
+                                                const formattedDate = dayjs(date).format('YYYY-MM-DD');
+                                                this.setState({ securityTraining: formattedDate })
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+                                </div>
+
+                                <div className="formSection">
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DatePicker
+                                            id='riskManagementTraining'
+                                            label='Risk Management Training'
+                                            className='formInput'
+                                            onChange={(date) => {
+                                                const formattedDate = dayjs(date).format('YYYY-MM-DD');
+                                                this.setState({ riskManagementTraining: formattedDate })
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+
+                                    <TextField id="incidentReports" required label="Incident Reported" value={this.state.incidentReports} type="number" className="formInput" onChange={this.textFieldChange} />
+                                </div>
+                                <div className="formSection centre" >
+                                    <FormControlLabel
+                                        label="Background Check"
+                                        className="backgroundCheckLabel"
+                                        control={
+                                            <Checkbox
+                                                id="backgroundCheck"
+                                                checked={this.state.backgroundCheck}
+                                                onChange={(e) => this.setState({ backgroundCheck: e.target.checked })}
+                                            />
+                                        }
+                                    />
+                                </div>
+
+                                <div className="formSection centre">
+                                    <Button style={{ backgroundColor: '#EBF7EC', color: '#1D7324' }} disabled={!this.state.formValid} onClick={this.addUser}>
+                                        Add User
+                                    </Button>
+                                </div>
                             </div>
-                        </div>
+                        </ThemeProvider>
                         :
                         // table to show existing users and give delete button
                         <div className="deleteTable">

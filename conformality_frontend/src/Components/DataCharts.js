@@ -104,16 +104,16 @@ export default class DataCharts extends Component {
                     type: 'bar',
                     label: 'Compliance %',
                     data: compliancePercentages,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(141,186,1,0.9)',
+                    borderColor: 'rgba(141,186,1,1)',
                     borderWidth: 1,
                 },
                 {
                     type: 'line',
                     label: 'Average Compliance %',
                     data: Array(labels.length).fill(averageCompliance),
-                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(195,79,80,1)',
+                    borderColor: 'rgba(195,79,80,1)',
                     borderWidth: 2,
                     fill: false,
                 }
@@ -156,12 +156,14 @@ export default class DataCharts extends Component {
                 {
                     label: 'Completed',
                     data: stackedCompletedCounts,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    backgroundColor: 'rgba(141,186,1,1)',
+                    borderColor: 'rgba(141,186,1,1)',
                 },
                 {
                     label: 'Pending',
                     data: stackedPendingCounts,
-                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    backgroundColor: 'rgba(195,79,80,1)',
+                    borderColor: 'rgba(195,79,80,255)',
                 },
             ],
         };
@@ -204,8 +206,8 @@ export default class DataCharts extends Component {
                 {
                     label: 'Incident Reports',
                     data: incidentChartData,
-                    borderColor: 'rgba(75, 192, 192, 0.6)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    backgroundColor: 'rgba(195,79,80,1)',
+                    borderColor: 'rgba(195,79,80,255)',
                     fill: true,
                 },
             ],
@@ -257,8 +259,8 @@ export default class DataCharts extends Component {
                         metrics.backgroundCheck.pending,
                     ],
                     backgroundColor: [
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(141,186,1,1)',
+                        'rgba(195,79,80,1)',
                     ],
                 },
             ],
@@ -267,7 +269,35 @@ export default class DataCharts extends Component {
         return (
             <>
                 <div className="dashboard">
+                <div className="dashboard-container">
+                        {/* chart for individual user compliance */}
+                        <div className="table-container">
+                            <h2>User Compliance Percentage</h2>
+                            <Bar data={chartData} options={options} />
+                        </div>
+
+                        {/* chart to display compliances metrics */}
+                        <div className="table-container">
+                            <h2>Stacked Compliance Metrics</h2>
+                            <Bar data={stackedChartData} options={stackedOptions} />
+                        </div>
+                    </div>
+
                     <div className="dashboard-container">
+                        {/* chart to display number of incidents across users */}
+                        <div className="table-container">
+                            <h2>Incident Reports by User</h2>
+                            <Line data={incidentLineChartData} options={incidentLineChartOptions} />
+                        </div>
+
+                        {/*chart to display total pending and completed tasks  */}
+                        <div className="table-container pie-chart-container" style={{ height: '400px' }}>
+                            <h2>Total Completed vs Pending Tasks</h2>
+                            <Pie data={pieChartData} />
+                        </div>
+                    </div>
+
+                    <div className="dashboard-container" style={{marginTop: '5%'}}>
                         {/* table to display user compliance metrics */}
                         <div className="table-container">
                             <h2>User Compliance Metrics</h2>
@@ -337,34 +367,6 @@ export default class DataCharts extends Component {
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-
-                    <div className="dashboard-container">
-                        {/* chart for individual user compliance */}
-                        <div className="table-container">
-                            <h2>User Compliance Percentage</h2>
-                            <Bar data={chartData} options={options} />
-                        </div>
-
-                        {/* chart to display compliances metrics */}
-                        <div className="table-container">
-                            <h2>Stacked Compliance Metrics</h2>
-                            <Bar data={stackedChartData} options={stackedOptions} />
-                        </div>
-                    </div>
-
-                    <div className="dashboard-container">
-                        {/* chart to display number of incidents across users */}
-                        <div className="table-container">
-                            <h2>Incident Reports by User</h2>
-                            <Line data={incidentLineChartData} options={incidentLineChartOptions} />
-                        </div>
-
-                        {/*chart to display total pending and completed tasks  */}
-                        <div className="table-container pie-chart-container" style={{ height: '400px' }}>
-                            <h2>Total Completed vs Pending Tasks</h2>
-                            <Pie data={pieChartData} />
                         </div>
                     </div>
                 </div>
